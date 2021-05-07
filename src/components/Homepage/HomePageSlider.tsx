@@ -10,11 +10,13 @@ import bg6 from "../../assets/bg6.jpg";
 function HomePageSlider(): ReactElement {
   const images = [bg1, bg2, bg3, bg4, bg5, bg6];
   return (
-    <BackgroundSlider
-      images={images}
-      duration={5}
-      transition={2}
-    ></BackgroundSlider>
+    <>
+      <BackgroundSlider
+        images={images}
+        duration={5}
+        transition={1}
+      ></BackgroundSlider>
+    </>
   );
 }
 
