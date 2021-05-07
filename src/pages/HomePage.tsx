@@ -1,8 +1,13 @@
 import React from "react";
 import styled from "styled-components";
+import HomePageSlider from "../components/Homepage/HomePageSlider";
 
 function HomePage(): React.ReactElement {
-  return <HomePageWrapper>homepage</HomePageWrapper>;
+  return (
+    <HomePageWrapper>
+      <HomePageSlider></HomePageSlider>
+    </HomePageWrapper>
+  );
 }
 
 const HomePageWrapper = styled.div``;
