@@ -1,12 +1,15 @@
 import React, { ReactElement } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import Tilt from "react-tilt";
 
 export default function HomePageHero(): ReactElement {
   return (
     <HomePageHeroWrapper>
       <div className="content">
-        <img src="./images/logo_transparent.png" alt="logo"></img>
+        <Tilt className="logoTilt" options={{ max: 25 }}>
+          <img src="./images/logo_transparent.png" alt="logo"></img>
+        </Tilt>
         <div>
           <p>
             <span className="highlighted">Access</span>
@@ -41,8 +44,12 @@ const HomePageHeroWrapper = styled.div`
     padding: 1rem 3rem;
   }
 
-  .content > img {
+  .content > .logoTilt {
     width: 30%;
+  }
+
+  .content img {
+    width: 100%;
     margin: auto;
   }
 
@@ -89,9 +96,14 @@ const HomePageHeroWrapper = styled.div`
       padding: 1rem 0rem;
     }
 
-    .content > img {
+    .content > .logoTilt {
       width: 90%;
       max-height: 55%;
+    }
+
+    .content img {
+      width: 100%;
+      height: 100%;
     }
     .content > div {
       min-height: 45%;
