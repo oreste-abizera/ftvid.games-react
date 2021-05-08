@@ -24,7 +24,7 @@ const VideosListWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 
   .match {
     width: 30%;

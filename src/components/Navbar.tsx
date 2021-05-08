@@ -36,6 +36,10 @@ const NavbarWrapper = styled.div`
   box-shadow: 0px 8px 5px -6px rgba(193, 191, 191, 0.75);
   -webkit-box-shadow: 0px 8px 5px -6px rgba(193, 191, 191, 0.75);
   -moz-box-shadow: 0px 8px 5px -6px rgba(193, 191, 191, 0.75);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: #fff;
 
   > .tilt {
     height: 70%;
