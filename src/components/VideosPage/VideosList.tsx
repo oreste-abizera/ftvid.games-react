@@ -1,6 +1,7 @@
 import React, { ReactElement } from "react";
 import styled from "styled-components";
 import Context from "../../context/ContextProvider";
+import { timeAgo } from "../../utils/helperFunctions";
 import { Match } from "../../utils/types";
 
 export default function VideosList(): ReactElement {
@@ -12,7 +13,7 @@ export default function VideosList(): ReactElement {
         <div className="match" key={match._id}>
           <img src={match.thumbnail} alt={match.title}></img>
           <p className="title">{match.title}</p>
-          <p>{match.date}</p>
+          <p>{timeAgo(match.date)}</p>
         </div>
       ))}
     </VideosListWrapper>
