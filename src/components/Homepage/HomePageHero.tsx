@@ -12,7 +12,7 @@ export default function HomePageHero(): ReactElement {
             <span className="highlighted">Access</span>
           </p>
           <p>
-            All <span className="highlighted">Football</span> Higlights
+            All <span className="highlighted">Football</span> Highlights
           </p>
           <p> in one place</p>
 
