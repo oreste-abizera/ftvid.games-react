@@ -1,14 +1,13 @@
-import { ReactElement, useContext } from "react";
+import { ReactElement } from "react";
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
-import Context from "../context/ContextProvider";
+import VideosList from "../components/VideosPage/VideosList";
 
 export default function VideosPage(): ReactElement {
-  const contextData = useContext(Context);
-  console.log(contextData);
   return (
     <VideosPageWrapper>
       <Navbar></Navbar>
+      <VideosList></VideosList>
     </VideosPageWrapper>
   );
 }

@@ -1,26 +1,27 @@
 export interface Match {
-  url: String;
-  title: String;
-  thumbnail: String;
-  embed: String;
+  _id: string;
+  url: string;
+  title: string;
+  thumbnail: string;
+  embed: string;
   date: Date;
   side1: {
-    name: String;
-    url: String;
+    name: string;
+    url: string;
   };
   side2: {
-    name: String;
-    url: String;
+    name: string;
+    url: string;
   };
   competition: {
     id: Number;
-    name: String;
-    url: String;
+    name: string;
+    url: string;
   };
   videos: Array<{
-    _id: String;
-    title: String;
-    embed: String;
+    _id: string;
+    title: string;
+    embed: string;
   }>;
 }
 
