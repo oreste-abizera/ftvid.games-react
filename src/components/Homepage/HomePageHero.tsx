@@ -97,6 +97,7 @@ const HomePageHeroWrapper = styled.div`
       min-height: 45%;
       width: 100%;
       font-size: 4rem;
+      letter-spacing: 3px;
     }
   }
 
