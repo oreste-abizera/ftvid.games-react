@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Tilt from "react-tilt";
 import { useHistory } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
+import logo from "../assets/logo.png";
 
 export default function Navbar(): ReactElement {
   const history = useHistory();
@@ -10,11 +11,7 @@ export default function Navbar(): ReactElement {
   return (
     <NavbarWrapper>
       <Tilt className="tilt">
-        <img
-          onClick={() => history.push("/")}
-          src="./images/logo.png"
-          alt="Logo"
-        ></img>
+        <img onClick={() => history.push("/")} src={logo} alt="Logo"></img>
       </Tilt>
       <div className="searchBox">
         <input type="text" placeholder="Search videos here"></input>

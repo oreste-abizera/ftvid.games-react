@@ -3,14 +3,22 @@ import styled from "styled-components";
 import Context from "../../context/ContextProvider";
 import { timeAgo } from "../../utils/helperFunctions";
 import { Match } from "../../utils/types";
+import { useHistory } from "react-router-dom";
 
 export default function VideosList(): ReactElement {
   const contextData: any = React.useContext(Context);
   let matches: Array<Match> = contextData.matches;
+  const history = useHistory();
   return (
     <VideosListWrapper>
       {matches.map((match) => (
-        <div className="match" key={match._id}>
+        <div
+          className="match"
+          key={match._id}
+          onClick={() => {
+            history.push(`/videos/${match._id}`);
+          }}
+        >
           <img src={match.thumbnail} alt={match.title}></img>
           <p className="title">{match.title}</p>
           <p>{timeAgo(match.date)}</p>
@@ -31,7 +39,7 @@ const VideosListWrapper = styled.div`
     margin: 1rem 0 2rem 0;
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
+    cursor: pointer;
   }
 
   .match img {
