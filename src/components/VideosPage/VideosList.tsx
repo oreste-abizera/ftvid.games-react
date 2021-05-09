@@ -23,9 +23,6 @@ export default function VideosList({ results }: Props): ReactElement {
           to={`/videos/${match._id}`}
           className="match"
           key={match._id}
-          onClick={() => {
-            history.push(`/videos/${match._id}`);
-          }}
         >
           <img src={match.thumbnail} alt={match.title}></img>
           <p className="title">{match.title}</p>
