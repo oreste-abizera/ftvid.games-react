@@ -16,7 +16,7 @@ export default function VideosList({ results }: Props): ReactElement {
   return (
     <VideosListWrapper>
       {matches.length === 0 && (
-        <p style={{ marginTop: "4rem" }}>No results found.</p>
+        <p style={{ margin: "4rem auto" }}>No results found.</p>
       )}
       {matches.map((match) => (
         <Link
@@ -39,12 +39,12 @@ export default function VideosList({ results }: Props): ReactElement {
 const VideosListWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   margin-top: 0.5rem;
 
   .match {
     width: 30%;
-    margin: 1rem 0 2rem 0;
+    margin: 1rem 1.5% 2rem 1.5%;
     display: flex;
     flex-direction: column;
     cursor: pointer;
@@ -69,6 +69,7 @@ const VideosListWrapper = styled.div`
     }
   }
   @media screen and (max-width: 768px) and (min-width: 692px) {
+    justify-content: space-around;
     .match {
       width: 40%;
     }

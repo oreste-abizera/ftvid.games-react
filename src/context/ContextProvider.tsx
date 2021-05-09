@@ -1,4 +1,5 @@
 import React, { ReactElement } from "react";
+import { useHistory } from "react-router";
 import { loadSearchedVideos, loadVideos } from "../functions";
 import { Match, PageStatus } from "../utils/types";
 
@@ -12,6 +13,8 @@ export function ContextProvider({ children }: Props): ReactElement {
   const [loading, setloading] = React.useState(false);
   const [searchKey, setSearchKey] = React.useState("");
   const [searchResults, setSearchResults] = React.useState<Array<Match>>([]);
+
+  const history = useHistory();
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -51,7 +54,8 @@ export function ContextProvider({ children }: Props): ReactElement {
       return;
     }
     let tempSearchedResults = await loadSearchedVideos(searchKey);
-    console.log(searchKey, tempSearchedResults);
+    setSearchResults(tempSearchedResults);
+    history.push("/search");
   };
 
   return (
