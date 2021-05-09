@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Navbar from "../components/Navbar";
 import { VideoDisplay } from "../components/SingleVideoPage/VideoDisplay";
 import Context from "../context/ContextProvider";
+import { loadVideo } from "../functions";
 import { Match } from "../utils/types";
 
 export default function SingleVideoPage(props: any): ReactElement {
@@ -12,16 +13,19 @@ export default function SingleVideoPage(props: any): ReactElement {
   const [isloading, setisloading] = useState(false);
 
   useEffect(() => {
-    setisloading(true);
-    const { id } = props.match.params;
-    let tempCurrentMatch = matches.find((match) => match._id === id);
-    if (tempCurrentMatch) {
-      setcurrentMatch(tempCurrentMatch);
-    } else {
-      //load match details from backend
-      console.log("load from backend");
+    async function init() {
+      setisloading(true);
+      const { id } = props.match.params;
+      let tempCurrentMatch = matches.find((match) => match._id === id);
+      if (tempCurrentMatch) {
+        setcurrentMatch(tempCurrentMatch);
+      } else {
+        //load match details from backend
+        setcurrentMatch(await loadVideo(id));
+      }
+      setisloading(false);
     }
-    setisloading(false);
+    init();
   }, [matches, props.match.params]);
 
   return (

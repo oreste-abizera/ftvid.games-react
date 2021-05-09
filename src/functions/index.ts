@@ -10,3 +10,12 @@ export async function loadVideos(page: Number) {
   }
   return [];
 }
+
+export async function loadVideo(id: string) {
+  let response = await axios.get(`${url}/videos/${id}`);
+  if (response) {
+    if (response.data) {
+      return response.data.match;
+    }
+  }
+}
