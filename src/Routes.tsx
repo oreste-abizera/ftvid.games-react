@@ -4,6 +4,7 @@ import ErrorPage from "./pages/ErrorPage";
 import HomePage from "./pages/HomePage";
 import VideosPage from "./pages/VideosPage";
 import SingleVideoPage from "./pages/SingleVideoPage";
+import SearchVideosPage from "./pages/SearchVideosPage";
 
 function Routes(): ReactElement {
   return (
@@ -11,6 +12,7 @@ function Routes(): ReactElement {
       <Route exact path="/" component={HomePage}></Route>
       <Route exact path="/videos" component={VideosPage}></Route>
       <Route exact path="/videos/:id" component={SingleVideoPage}></Route>
+      <Route exact path="/search" component={SearchVideosPage}></Route>
       <Route path="*" component={ErrorPage}></Route>
     </Switch>
   );
