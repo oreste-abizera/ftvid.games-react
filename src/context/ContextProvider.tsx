@@ -10,6 +10,8 @@ export function ContextProvider({ children }: Props): ReactElement {
   const [matches, setmatches] = React.useState<Array<Match>>([]);
   const [pageStatus, setpageStatus] = React.useState<PageStatus>();
   const [loading, setloading] = React.useState(false);
+  const [searchKey, setSearchKey] = React.useState("");
+  const [searchResults, setSearchResults] = React.useState<Array<Match>>([]);
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -38,9 +40,27 @@ export function ContextProvider({ children }: Props): ReactElement {
     }
   }
 
+  const handleSearchKey = (e: any) => {
+    setSearchKey(e.target.value);
+  };
+
+  const search = (e: any) => {
+    e.preventDefault();
+    alert("search occurs here: " + searchKey);
+  };
+
   return (
     <Context.Provider
-      value={{ appName: "FtVid", matches, pageStatus, loadNextPage }}
+      value={{
+        appName: "FtVid",
+        matches,
+        pageStatus,
+        searchKey,
+        searchResults,
+        handleSearchKey,
+        search,
+        loadNextPage,
+      }}
     >
       {children}
     </Context.Provider>

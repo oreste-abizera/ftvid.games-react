@@ -5,11 +5,11 @@ import VideosList from "../components/VideosPage/VideosList";
 import Context from "../context/ContextProvider";
 
 export default function SearchVideosPage(): ReactElement {
-  const contextData: any = useContext(Context);
+  const { searchResults }: any = useContext(Context);
   return (
     <SearchVideosPageWrapper>
       <Navbar></Navbar>
-      <VideosList></VideosList>
+      <VideosList results={searchResults}></VideosList>
     </SearchVideosPageWrapper>
   );
 }

@@ -1,11 +1,13 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useContext } from "react";
 import styled from "styled-components";
 import Tilt from "react-tilt";
 import { useHistory } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 import logo from "../assets/logo.png";
+import Context from "../context/ContextProvider";
 
 export default function Navbar(): ReactElement {
+  const { searchKey, handleSearchKey, search }: any = useContext(Context);
   const history = useHistory();
 
   return (
@@ -13,10 +15,15 @@ export default function Navbar(): ReactElement {
       <Tilt className="tilt">
         <img onClick={() => history.push("/")} src={logo} alt="Logo"></img>
       </Tilt>
-      <div className="searchBox">
-        <input type="text" placeholder="Search videos here"></input>
-        <FaSearch></FaSearch>
-      </div>
+      <form className="searchBox" onSubmit={search}>
+        <input
+          type="text"
+          placeholder="Search videos here"
+          value={searchKey}
+          onChange={handleSearchKey}
+        ></input>
+        <FaSearch onClick={search}></FaSearch>
+      </form>
     </NavbarWrapper>
   );
 }

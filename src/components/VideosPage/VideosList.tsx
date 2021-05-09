@@ -5,12 +5,19 @@ import { timeAgo } from "../../utils/helperFunctions";
 import { Match } from "../../utils/types";
 import { Link, useHistory } from "react-router-dom";
 
-export default function VideosList(): ReactElement {
+interface Props {
+  results?: Array<Match>;
+}
+
+export default function VideosList({ results }: Props): ReactElement {
   const contextData: any = React.useContext(Context);
-  let matches: Array<Match> = contextData.matches;
+  let matches: Array<Match> = results || contextData.matches;
   const history = useHistory();
   return (
     <VideosListWrapper>
+      {matches.length === 0 && (
+        <p style={{ marginTop: "4rem" }}>No results found.</p>
+      )}
       {matches.map((match) => (
         <Link
           to={`/videos/${match._id}`}
