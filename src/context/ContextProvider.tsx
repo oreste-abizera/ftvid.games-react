@@ -1,5 +1,5 @@
 import React, { ReactElement } from "react";
-import { loadVideos } from "../functions";
+import { loadSearchedVideos, loadVideos } from "../functions";
 import { Match, PageStatus } from "../utils/types";
 
 interface Props {
@@ -44,9 +44,14 @@ export function ContextProvider({ children }: Props): ReactElement {
     setSearchKey(e.target.value);
   };
 
-  const search = (e: any) => {
+  const search = async (e: any) => {
     e.preventDefault();
-    alert("search occurs here: " + searchKey);
+    if (!searchKey) {
+      alert("Enter text to search");
+      return;
+    }
+    let tempSearchedResults = await loadSearchedVideos(searchKey);
+    console.log(searchKey, tempSearchedResults);
   };
 
   return (
