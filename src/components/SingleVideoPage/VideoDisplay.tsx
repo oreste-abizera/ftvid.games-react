@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { timeAgo } from "../../utils/helperFunctions";
 import { Match } from "../../utils/types";
+import NotFoundComponent from "../NotFoundComponent";
 
 interface Props {
   match: Match;
@@ -10,7 +11,7 @@ interface Props {
 export const VideoDisplay = ({ match }: Props) => {
   const { videos } = match;
   if (videos.length === 0) {
-    return <div>no video found</div>;
+    return <NotFoundComponent text="no video found"></NotFoundComponent>;
   }
   return (
     <VideoDisplayWrapper>

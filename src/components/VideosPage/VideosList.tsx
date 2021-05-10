@@ -5,6 +5,7 @@ import { timeAgo } from "../../utils/helperFunctions";
 import { Match } from "../../utils/types";
 import { Link } from "react-router-dom";
 import Loader from "../Loader";
+import NotFoundComponent from "../NotFoundComponent";
 
 interface Props {
   results?: Array<Match>;
@@ -24,7 +25,7 @@ export default function VideosList({ results }: Props): ReactElement {
         </Link>
       ))}
       {matches.length === 0 && !loading && (
-        <p style={{ margin: "4rem auto" }}>No results found.</p>
+        <NotFoundComponent text="no results found."></NotFoundComponent>
       )}
       {loading && <Loader></Loader>}
     </VideosListWrapper>

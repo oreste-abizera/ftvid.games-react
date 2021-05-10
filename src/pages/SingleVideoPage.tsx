@@ -1,6 +1,8 @@
 import { ReactElement, useContext, useEffect, useState } from "react";
 import styled from "styled-components";
+import Loader from "../components/Loader";
 import Navbar from "../components/Navbar";
+import NotFoundComponent from "../components/NotFoundComponent";
 import { VideoDisplay } from "../components/SingleVideoPage/VideoDisplay";
 import Context from "../context/ContextProvider";
 import { loadVideo } from "../functions";
@@ -32,13 +34,13 @@ export default function SingleVideoPage(props: any): ReactElement {
     <SingleVideoPageWrapper>
       <Navbar></Navbar>
       {isloading ? (
-        <div>loading...</div>
+        <Loader></Loader>
       ) : (
         <>
           {currentMatch ? (
             <VideoDisplay match={currentMatch}></VideoDisplay>
           ) : (
-            <div>match not found</div>
+            <NotFoundComponent text="Match not found"></NotFoundComponent>
           )}
         </>
       )}
