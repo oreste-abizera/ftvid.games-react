@@ -18,7 +18,8 @@ export default function SingleVideoPage(props: any): ReactElement {
     async function init() {
       setisloading(true);
       const { id } = props.match.params;
-      let tempCurrentMatch = matches.find((match) => match._id === id);
+      let tempMatches = matches || [];
+      let tempCurrentMatch = tempMatches.find((match) => match._id === id);
       if (tempCurrentMatch) {
         setcurrentMatch(tempCurrentMatch);
       } else {
