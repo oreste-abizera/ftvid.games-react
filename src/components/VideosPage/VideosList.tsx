@@ -3,7 +3,8 @@ import styled from "styled-components";
 import Context from "../../context/ContextProvider";
 import { timeAgo } from "../../utils/helperFunctions";
 import { Match } from "../../utils/types";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
+import Loader from "../Loader";
 
 interface Props {
   results?: Array<Match>;
@@ -11,24 +12,21 @@ interface Props {
 
 export default function VideosList({ results }: Props): ReactElement {
   const contextData: any = React.useContext(Context);
-  let matches: Array<Match> = results || contextData.matches;
-  const history = useHistory();
+  let matches: Array<Match> = results || contextData.matches || [];
+  const { loading } = contextData;
   return (
     <VideosListWrapper>
-      {matches.length === 0 && (
-        <p style={{ margin: "4rem auto" }}>No results found.</p>
-      )}
       {matches.map((match) => (
-        <Link
-          to={`/videos/${match._id}`}
-          className="match"
-          key={match._id}
-        >
+        <Link to={`/videos/${match._id}`} className="match" key={match._id}>
           <img src={match.thumbnail} alt={match.title}></img>
           <p className="title">{match.title}</p>
           <p>{timeAgo(match.date)}</p>
         </Link>
       ))}
+      {matches.length === 0 && !loading && (
+        <p style={{ margin: "4rem auto" }}>No results found.</p>
+      )}
+      {loading && <Loader></Loader>}
     </VideosListWrapper>
   );
 }

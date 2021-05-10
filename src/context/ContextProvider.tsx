@@ -11,6 +11,7 @@ export function ContextProvider({ children }: Props): ReactElement {
   const [matches, setmatches] = React.useState<Array<Match>>([]);
   const [pageStatus, setpageStatus] = React.useState<PageStatus>();
   const [loading, setloading] = React.useState(false);
+  const [searching, setsearching] = React.useState(false);
   const [searchKey, setSearchKey] = React.useState("");
   const [searchResults, setSearchResults] = React.useState<Array<Match>>([]);
 
@@ -53,9 +54,11 @@ export function ContextProvider({ children }: Props): ReactElement {
       alert("Enter text to search");
       return;
     }
+    history.push("/search");
+    setsearching(true);
     let tempSearchedResults = await loadSearchedVideos(searchKey);
     setSearchResults(tempSearchedResults);
-    history.push("/search");
+    setsearching(false);
   };
 
   return (
@@ -66,6 +69,8 @@ export function ContextProvider({ children }: Props): ReactElement {
         pageStatus,
         searchKey,
         searchResults,
+        loading,
+        searching,
         handleSearchKey,
         search,
         loadNextPage,
