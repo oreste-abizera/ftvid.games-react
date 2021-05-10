@@ -58,6 +58,21 @@ export function ContextProvider({ children }: Props): ReactElement {
     setsearching(true);
     let tempSearchedResults = await loadSearchedVideos(searchKey);
     setSearchResults(tempSearchedResults);
+
+    //push recent to local storage
+    let suggestions = localStorage.getItem("suggestions");
+    let tempSuggestions = suggestions ? JSON.parse(suggestions) : [];
+    tempSuggestions.push(searchKey);
+    localStorage.setItem("suggestions", JSON.stringify(tempSuggestions));
+    setsearching(false);
+  };
+
+  const searchRecent = async (searchTerm: string) => {
+    history.push("/search");
+    setsearching(true);
+    let tempSearchedResults = await loadSearchedVideos(searchTerm);
+    setSearchResults(tempSearchedResults);
+    setSearchKey(searchTerm);
     setsearching(false);
   };
 
@@ -73,6 +88,7 @@ export function ContextProvider({ children }: Props): ReactElement {
         searching,
         handleSearchKey,
         search,
+        searchRecent,
         loadNextPage,
       }}
     >
