@@ -1,9 +1,15 @@
-import { ReactElement } from "react";
+import { ReactElement, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
+import Context from "../context/ContextProvider";
 
 function ErrorPage(): ReactElement {
+  const { clearSearch }: any = useContext(Context);
+  useEffect(() => {
+    clearSearch();
+    // eslint-disable-next-line
+  }, []);
   return (
     <ErrorPageWrapper>
       <Navbar></Navbar>

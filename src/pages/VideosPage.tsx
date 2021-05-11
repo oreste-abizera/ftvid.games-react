@@ -1,4 +1,4 @@
-import { ReactElement, useContext } from "react";
+import { ReactElement, useContext, useEffect } from "react";
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
 import VideosList from "../components/VideosPage/VideosList";
@@ -6,6 +6,12 @@ import Context from "../context/ContextProvider";
 
 export default function VideosPage(): ReactElement {
   const contextData: any = useContext(Context);
+  const { clearSearch } = contextData;
+
+  useEffect(() => {
+    clearSearch();
+    // eslint-disable-next-line
+  }, []);
   const handleScroll = (e: any) => {
     const bottom =
       Math.floor(e.target.scrollHeight - e.target.scrollTop) <=

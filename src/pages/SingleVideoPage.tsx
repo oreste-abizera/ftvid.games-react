@@ -13,6 +13,12 @@ export default function SingleVideoPage(props: any): ReactElement {
   const matches: Array<Match> = contextData.matches;
   const [currentMatch, setcurrentMatch] = useState<Match>();
   const [isloading, setisloading] = useState(false);
+  const { clearSearch } = contextData;
+
+  useEffect(() => {
+    clearSearch();
+    // eslint-disable-next-line
+  }, []);
 
   useEffect(() => {
     async function init() {

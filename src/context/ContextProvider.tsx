@@ -48,13 +48,17 @@ export function ContextProvider({ children }: Props): ReactElement {
     setSearchKey(e.target.value);
   };
 
+  const clearSearch = () => {
+    setSearchKey("");
+  };
+
   const search = async (e: any) => {
     e.preventDefault();
     if (!searchKey) {
       alert("Enter text to search");
       return;
     }
-    history.push("/search");
+    if (history.location.pathname !== "/search") history.push("/search");
     setsearching(true);
     let tempSearchedResults = await loadSearchedVideos(searchKey);
     setSearchResults(tempSearchedResults);
@@ -86,6 +90,7 @@ export function ContextProvider({ children }: Props): ReactElement {
         searchResults,
         loading,
         searching,
+        clearSearch,
         handleSearchKey,
         search,
         searchRecent,
