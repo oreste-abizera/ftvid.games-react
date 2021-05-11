@@ -17,3 +17,18 @@ code {
   padding: 0;
   box-sizing: border-box;
 }
+
+.twitter__link {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 2rem;
+  transition: 0.5s all linear;
+}
+
+.twitter__link:hover {
+  transform: translateY(-5px);
+}
+
+.twitter__link svg {
+  font-size: larger;
+}
