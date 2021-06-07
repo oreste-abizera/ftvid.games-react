@@ -85,6 +85,10 @@ export const SEO = ({
           property: "twitter:image",
           content: `${url}${image}`,
         },
+        {
+          property: "twitter:url",
+          content: url,
+        },
       ]}
     />
   );
