@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import HomePageHero from "../components/Homepage/HomePageHero";
 import HomePageSlider from "../components/Homepage/HomePageSlider";
+import { SEO } from "../components/SEO";
 import Context from "../context/ContextProvider";
 
 function HomePage(): React.ReactElement {
@@ -11,10 +12,13 @@ function HomePage(): React.ReactElement {
     // eslint-disable-next-line
   }, []);
   return (
-    <HomePageWrapper>
-      <HomePageSlider></HomePageSlider>
-      <HomePageHero></HomePageHero>
-    </HomePageWrapper>
+    <>
+      <SEO></SEO>
+      <HomePageWrapper>
+        <HomePageSlider></HomePageSlider>
+        <HomePageHero></HomePageHero>
+      </HomePageWrapper>
+    </>
   );
 }
 

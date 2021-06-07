@@ -36,3 +36,9 @@ export interface PageStatus {
   totalDocs: Number;
   totalPages: Number;
 }
+
+export interface SEOProps {
+  title?: string;
+  description?: string;
+  image?: any;
+}
