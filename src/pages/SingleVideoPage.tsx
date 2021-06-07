@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Loader from "../components/Loader";
 import Navbar from "../components/Navbar";
 import NotFoundComponent from "../components/NotFoundComponent";
+import { SEO } from "../components/SEO";
 import { VideoDisplay } from "../components/SingleVideoPage/VideoDisplay";
 import Context from "../context/ContextProvider";
 import { loadVideo } from "../functions";
@@ -41,13 +42,31 @@ export default function SingleVideoPage(props: any): ReactElement {
     <SingleVideoPageWrapper>
       <Navbar></Navbar>
       {isloading ? (
-        <Loader></Loader>
+        <>
+          <SEO
+            title="FtVid | Loading: loading match videos."
+            description="Loading: loading match videos."
+          ></SEO>
+          <Loader></Loader>
+        </>
       ) : (
         <>
           {currentMatch ? (
-            <VideoDisplay match={currentMatch}></VideoDisplay>
+            <>
+              <SEO
+                title={`${currentMatch.side1} vs ${currentMatch.side2} | ${currentMatch.competition.name}.`}
+                description={`${currentMatch.side1.name} vs ${currentMatch.side2.name} | ${currentMatch.competition.name}.Played at ${currentMatch.date}.`}
+              ></SEO>
+              <VideoDisplay match={currentMatch}></VideoDisplay>
+            </>
           ) : (
-            <NotFoundComponent text="Match not found"></NotFoundComponent>
+            <>
+              <SEO
+                title="FtVid | Error: Match not found."
+                description="Error | Match not found."
+              ></SEO>
+              <NotFoundComponent text="Match not found"></NotFoundComponent>
+            </>
           )}
         </>
       )}
@@ -57,5 +76,5 @@ export default function SingleVideoPage(props: any): ReactElement {
 
 const SingleVideoPageWrapper = styled.div`
   height: 100vh;
-  overflow-y: scroll;
+  overflow-y: auto;
 `;
