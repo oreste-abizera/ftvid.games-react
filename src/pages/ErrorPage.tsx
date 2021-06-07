@@ -2,6 +2,7 @@ import { ReactElement, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
+import { SEO } from "../components/SEO";
 import Context from "../context/ContextProvider";
 
 function ErrorPage(): ReactElement {
@@ -11,13 +12,16 @@ function ErrorPage(): ReactElement {
     // eslint-disable-next-line
   }, []);
   return (
-    <ErrorPageWrapper>
-      <Navbar></Navbar>
-      <div className="error__container">
-        <p>Oops, You lost the way!</p>
-        <Link to="/">Return to Home</Link>
-      </div>
-    </ErrorPageWrapper>
+    <>
+      <SEO title="FtVid | Error: Page not found."></SEO>
+      <ErrorPageWrapper>
+        <Navbar></Navbar>
+        <div className="error__container">
+          <p>Oops, You lost the way!</p>
+          <Link to="/">Return to Home</Link>
+        </div>
+      </ErrorPageWrapper>
+    </>
   );
 }
 

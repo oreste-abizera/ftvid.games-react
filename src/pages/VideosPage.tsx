@@ -1,6 +1,7 @@
 import { ReactElement, useContext, useEffect } from "react";
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
+import { SEO } from "../components/SEO";
 import VideosList from "../components/VideosPage/VideosList";
 import Context from "../context/ContextProvider";
 
@@ -22,10 +23,16 @@ export default function VideosPage(): ReactElement {
     }
   };
   return (
-    <VideosPageWrapper onScroll={handleScroll}>
-      <Navbar></Navbar>
-      <VideosList></VideosList>
-    </VideosPageWrapper>
+    <>
+      <SEO
+        title="FtVid | Highlights page. All Highlights are found here starting with recent ones."
+        description="Highlights page. All Highlights from recent ones are on this page."
+      ></SEO>
+      <VideosPageWrapper onScroll={handleScroll}>
+        <Navbar></Navbar>
+        <VideosList></VideosList>
+      </VideosPageWrapper>
+    </>
   );
 }
 

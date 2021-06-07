@@ -7,9 +7,11 @@ const url =
   process.env.NODE_ENV === "development"
     ? "http://localhost:3000"
     : "https://www.ftvid.games";
+const defaultDescription =
+  "FtVid | Football Videos | All football highlights and skills in one place. Get access to all football highlights from different regions of the world. We talk about football.";
 export const SEO = ({
   title = "FtVid | Football Videos | All football highlights and skills in one place.",
-  description = "FtVid | Football Videos | All football highlights and skills in one place. Get access to all football highlights from different regions of the world. We talk about football.",
+  description = defaultDescription,
   image = defaultImage,
 }: SEOProps) => {
   return (
@@ -19,7 +21,10 @@ export const SEO = ({
       meta={[
         {
           name: `description`,
-          content: description,
+          content:
+            description !== defaultDescription
+              ? `${description} ${defaultDescription}`
+              : description,
         },
         {
           name: `image`,
@@ -41,7 +46,10 @@ export const SEO = ({
         },
         {
           property: "og:description",
-          content: description,
+          content:
+            description !== defaultDescription
+              ? `${description} ${defaultDescription}`
+              : description,
         },
         {
           property: "og:image",
@@ -68,7 +76,10 @@ export const SEO = ({
         },
         {
           property: "twitter:description",
-          content: description,
+          content:
+            description !== defaultDescription
+              ? `${description} ${defaultDescription}`
+              : description,
         },
         {
           property: "twitter:image",
