@@ -54,7 +54,7 @@ export default function SingleVideoPage(props: any): ReactElement {
           {currentMatch ? (
             <>
               <SEO
-                title={`${currentMatch.side1} vs ${currentMatch.side2} | ${currentMatch.competition.name}.`}
+                title={`${currentMatch.side1.name} vs ${currentMatch.side2.name} | ${currentMatch.competition.name}.`}
                 description={`${currentMatch.side1.name} vs ${currentMatch.side2.name} | ${currentMatch.competition.name}.Played at ${currentMatch.date}.`}
               ></SEO>
               <VideoDisplay match={currentMatch}></VideoDisplay>
