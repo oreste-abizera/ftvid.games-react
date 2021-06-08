@@ -28,7 +28,7 @@ export const SEO = ({
         },
         {
           name: `image`,
-          content: `${url}${image}`,
+          content: image === defaultImage ? `${url}${image}` : image,
         },
 
         //opengraph tags (for facebook)
@@ -53,7 +53,7 @@ export const SEO = ({
         },
         {
           property: "og:image",
-          content: `${url}${image}`,
+          content: image === defaultImage ? `${url}${image}` : image,
         },
         // {
         //   property: "fb:app_id",
@@ -63,30 +63,30 @@ export const SEO = ({
         //twitter tags
 
         {
-          property: "twitter:card",
+          name: "twitter:card",
           content: "summary_large_image",
         },
         {
-          property: "twitter:creator",
+          name: "twitter:creator",
           content: "@AbizeraOreste",
         },
         {
-          property: "twitter:title",
+          name: "twitter:title",
           content: title,
         },
         {
-          property: "twitter:description",
+          name: "twitter:description",
           content:
             description !== defaultDescription
               ? `${description} ${defaultDescription}`
               : description,
         },
         {
-          property: "twitter:image",
-          content: `${url}${image}`,
+          name: "twitter:image",
+          content: image === defaultImage ? `${url}${image}` : image,
         },
         {
-          property: "twitter:url",
+          name: "twitter:url",
           content: url,
         },
       ]}
